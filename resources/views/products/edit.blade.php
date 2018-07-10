@@ -1,24 +1,35 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>Produtos</title>
-</head>
-<body>
+@extends('templates.template')
 
-    <h1>Editar Produto</h1>
-    <a href="{{route('list.products')}}">Listagem de Produtos</a>
-    <hr>
+@section('content')
 
-    <form method="post" action="{{route('update.product', ['id' => $product->id])}}">
-        {{method_field('PUT')}}
-        {!! csrf_field() !!}
-        <input type="text" placeholder="Nome" name="name" value="{{$product->name}}">
-        <input type="text" placeholder="SKU" name="sku" value="{{$product->sku}}">
-        <input type="text" placeholder="Descrição" name="description" value="{{$product->description}}">
-        <input type="text" placeholder="Preço" name="price" value="{{$product->price}}">
-        <button type="submit">Cadastrar</button>
-    </form>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Editar Produto</h1>
+        </div>
+    </section>
 
-</body>
-</html>
+    <div class="container">
+        <form method="post" action="{{route('update.product', ['id' => $product->id])}}">
+            {{method_field('PUT')}}
+            {!! csrf_field() !!}
+            <div class="form-group">
+                <label for="name">Nome</label><br>
+                <input type="text" placeholder="Nome" name="name" value="{{$product->name}}">
+            </div>
+            <div class="form-group">
+                <label for="sku">SKU</label><br>
+                <input type="text" placeholder="SKU" name="sku" value="{{$product->sku}}">
+            </div>
+            <div class="form-group">
+                <label for="description">Descrição</label><br>
+                <input type="text" placeholder="Descrição" name="description" value="{{$product->description}}">
+            </div>
+            <div class="form-group">
+                <label for="price">Preço</label><br>
+                <input type="text" placeholder="Preço" name="price" value="{{$product->price}}">
+            </div>
+            <button class="btn btn-dark" type="submit">Cadastrar</button>
+        </form>
+    </div>
+
+@endsection

@@ -1,23 +1,33 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>Produtos</title>
-</head>
-<body>
+@extends('templates.template')
 
-    <h1>Cadastrar Produto</h1>
-    <a href="{{route('list.products')}}">Listagem de Produtos</a>
-    <hr>
+@section('content')
 
-    <form method="post" action="{{route('store.product')}}">
-        {!! csrf_field() !!}
-        <input type="text" required placeholder="Nome" name="name">
-        <input type="text" required placeholder="SKU" name="sku">
-        <input type="text" required placeholder="Descrição" name="description">
-        <input type="text" required placeholder="Preço" name="price">
-        <button type="submit">Cadastrar</button>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Cadastrar Produto</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        <form method="post" action="{{route('store.product')}}">
+            {!! csrf_field() !!}
+            <div class="form-group">
+                <label for="name">Nome</label><br>
+                <input type="text" required name="name">
+            </div>
+            <div class="form-group">
+                <label for="sku">SKU</label><br>
+                <input type="text" required name="sku">
+            </div>
+            <div class="form-group">
+                <label for="description">Descrição</label><br>
+                <input type="text" required name="description">
+            </div>
+            <div class="form-group">
+                <label for="price">Preço</label><br>
+                <input type="text" required name="price">
+            </div>
+            <button class="btn btn-dark" type="submit">Cadastrar</button>
     </form>
-
-</body>
-</html>
+    </div>
+@endsection
